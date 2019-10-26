@@ -13,7 +13,8 @@ class HikayetPageTitle extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: 22,
-          fontFamily: 'Cabin',
+          fontFamily: 'B612',
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

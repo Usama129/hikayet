@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hikayet/ChotayMotayWidgets/HikayetPagesTitle.dart';
 
-class SabKiKahani extends StatefulWidget {
+class SawaalJawaab extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _SabKiKahaniState();
+    return _SawaalJawaabState();
   }
 
 }
 
-class _SabKiKahaniState extends State<SabKiKahani> {
+class _SawaalJawaabState extends State<SawaalJawaab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          child: HikayetPageTitle("Sab ki Kahani")
+          child: HikayetPageTitle("Sawaal Jawaab"),
       ),
     );
   }

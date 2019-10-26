@@ -45,6 +45,14 @@ flutter:
     - family: Cabin
       fonts:
         - asset: assets/fonts/Cabin-Bold.ttf
+    - family: Petrona
+      fonts:
+        - asset: assets/fonts/Petrona-Regular.ttf
+    - family: B612
+      fonts:
+        - asset: assets/fonts/B612-Regular.ttf
+  assets:
+    - assets/images/typewriter.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

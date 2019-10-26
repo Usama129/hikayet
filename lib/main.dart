@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter',
+      debugShowCheckedModeBanner: false,
+      title: 'Hikayet',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: FutureBuilder(
         // get the Provider, and call the getUser method

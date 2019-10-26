@@ -19,17 +19,23 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/typewriter.jpg'),
+                fit: BoxFit.cover,
+              )
+            ),
             padding: EdgeInsets.all(20.0),
             child: Form(
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: 20.0),    // <= NEW
+                    SizedBox(height: 20.0),
                     Text(
-                      'Login Information',
+                      'Hikayet',
                       style: TextStyle(fontSize: 20),
                     ),
-                    SizedBox(height: 20.0),   // <= NEW
+                    SizedBox(height: 20.0),
                     TextFormField(
                         onSaved: (value) => _email = value,
                         keyboardType: TextInputType.emailAddress,

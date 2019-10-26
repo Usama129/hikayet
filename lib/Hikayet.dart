@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hikayet/screens/ApasKiBaat.dart';
+import 'package:hikayet/screens/SawaalJawaab.dart';
 import 'package:hikayet/utilities/Utils.dart';
-import 'screens/MeriKahani.dart';
-import 'screens/SabKiKahani.dart';
+import 'screens/TaazaTaaza.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'AuthService.dart';
@@ -19,27 +19,44 @@ class Hikayet extends StatefulWidget {
 }
 
 class _HikayetState extends State<Hikayet> {
+
+  final GlobalKey<ScaffoldState> _drawerKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return  DefaultTabController(
       length: 3,
       child: Scaffold(
-
+        floatingActionButton: Align(
+          alignment: Alignment(-0.8,-0.65),
+          child: FloatingActionButton(
+            onPressed: () => setState(() => _drawerKey.currentState.openDrawer()),
+            tooltip: 'More',
+            child: const Icon(Icons.account_circle),
+          ),
+        ),
         bottomNavigationBar: TabBar(
           labelColor: Colors.blueAccent,
           tabs: [
-            Tab(icon: Icon(Icons.people)),
-            Tab(icon: Icon(Icons.person)),
+            Tab(icon: Icon(Icons.import_contacts)),
+            Tab(icon: Icon(Icons.short_text)),
             Tab(icon: Icon(Icons.chat_bubble_outline)),
           ],
         ),
-        body: TabBarView(
-          children: [
-            SabKiKahani(),
-            MeriKahani(),
-            ApasKiBaat(),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child:  TabBarView(
+                children: <Widget>[
+                  TaazaTaaza(),
+                  SawaalJawaab(),
+                  ApasKiBaat(),
+                ],
+              ),
+            ),
           ],
         ),
+            key: _drawerKey,
             drawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical
@@ -49,7 +66,7 @@ class _HikayetState extends State<Hikayet> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text("Name of main character"),
+                child: Text(widget.currentUser.email),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
