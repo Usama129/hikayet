@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hikayet/HikayetConstants.dart';
 import 'package:hikayet/screens/ApasKiBaat.dart';
+import 'package:hikayet/screens/MeriKahani.dart';
 import 'package:hikayet/screens/SawaalJawaab.dart';
 import 'package:hikayet/utilities/Utils.dart';
 import 'screens/TaazaTaaza.dart';
@@ -14,29 +16,42 @@ class Hikayet extends StatefulWidget {
 
   Hikayet(this.currentUser);
 
+  HikayetState state;
+
   @override
-  _HikayetState createState() => _HikayetState();
+  HikayetState createState(){
+    state = HikayetState();
+    return state;
+  }
 }
 
-class _HikayetState extends State<Hikayet> {
+class HikayetState extends State<Hikayet> {
 
+  FirebaseUser _currentUser;
+
+  FirebaseUser get currentUser => _currentUser;
   final GlobalKey<ScaffoldState> _drawerKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    _currentUser = widget.currentUser;
     return  DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: Color(HikayetConstants.of(context).backgroundColorHex),
         floatingActionButton: Align(
           alignment: Alignment(-0.8,-0.65),
           child: FloatingActionButton(
+            foregroundColor: Color(HikayetConstants.of(context).buttonsColorHex),
+            backgroundColor: Colors.transparent,
             onPressed: () => setState(() => _drawerKey.currentState.openDrawer()),
-            tooltip: 'More',
+            tooltip: 'Mein',
             child: const Icon(Icons.account_circle),
+            heroTag: null,
           ),
         ),
         bottomNavigationBar: TabBar(
-          labelColor: Colors.blueAccent,
+          labelColor: Color(HikayetConstants.of(context).buttonsColorHex),
           tabs: [
             Tab(icon: Icon(Icons.import_contacts)),
             Tab(icon: Icon(Icons.short_text)),
@@ -66,7 +81,22 @@ class _HikayetState extends State<Hikayet> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text(widget.currentUser.email),
+                child: Column(
+                  children: <Widget>[
+                    FloatingActionButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MeriKahani(_currentUser)),
+                        );
+                      },
+                      tooltip: 'Meri Kahani',
+                      child: const Icon(Icons.person),
+                      heroTag: null,
+                    ),
+                    Text(widget.currentUser.email)
+                  ],
+                ),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),

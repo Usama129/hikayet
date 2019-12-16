@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hikayet/HikayetConstants.dart';
 
 class HikayetPageTitle extends StatelessWidget {
   HikayetPageTitle(this.text);
@@ -7,16 +8,27 @@ class HikayetPageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment(0, -0.85),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 22,
-          fontFamily: 'B612',
-          fontWeight: FontWeight.bold,
+    return Container(
+      width: 200,
+      //decoration: myBoxDecoration(),
+      child:  Align(
+        alignment: Alignment(0, -0.85),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Color(HikayetConstants.of(context).titleColorHex),
+            fontSize: 22,
+            fontFamily: 'B612',
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
   }
+}
+
+BoxDecoration myBoxDecoration() {
+  return BoxDecoration(
+    border: Border.all(),
+  );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hikayet/HikayetConstants.dart';
 
 class Post extends StatefulWidget {
 
@@ -27,18 +28,19 @@ BoxDecoration myBoxDecoration() {
   );
 }
 
-TextStyle textPostStyle(){
+TextStyle textPostStyle(context){
   return TextStyle(
     fontFamily: "Petrona",
     fontSize: 17,
+    color: Color(HikayetConstants.of(context).textColorHex),
   );
 }
 
-buildContent(content) {
+buildContent(content, context) {
   if (content is String) {
     return Text(
       content,
-      style: textPostStyle(),
+      style: textPostStyle(context),
     );
   }
 }
@@ -51,11 +53,8 @@ class _PostState extends State<Post> {
       height: 100,
       child: Container(
         decoration: myBoxDecoration(),
-        margin: EdgeInsets.only(left: 20, right: 20),
-        child: Container(
-          margin: EdgeInsets.only(top: 10),
-          child: buildContent(widget.content),
-        ),
+        margin: EdgeInsets.only(left: 20, right: 20, top: 13),
+        child: buildContent(widget.content, context),
       ),
     );
   }
