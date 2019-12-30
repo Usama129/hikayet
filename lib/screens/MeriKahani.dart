@@ -31,6 +31,8 @@ class _MeriKahaniState extends State<MeriKahani> {
       floatingActionButton: Align(
         alignment: Alignment(-0.8,-0.8),
         child: FloatingActionButton(
+          foregroundColor: Color(HikayetConstants.of(context).buttonsColorHex),
+          backgroundColor: Colors.transparent,
           onPressed: () {
             Navigator.popUntil(context, ModalRoute.withName('/'));
           },

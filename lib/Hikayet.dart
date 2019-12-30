@@ -64,7 +64,7 @@ class HikayetState extends State<Hikayet> {
               child:  TabBarView(
                 children: <Widget>[
                   TaazaTaaza(),
-                  SawaalJawaab(),
+                  SawaalJawaab(_currentUser),
                   ApasKiBaat(),
                 ],
               ),

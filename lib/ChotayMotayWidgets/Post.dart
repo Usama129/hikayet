@@ -17,10 +17,10 @@ class Post extends StatefulWidget {
 
 }
 
-BoxDecoration myBoxDecoration() {
+BoxDecoration postDecoration() {
   return BoxDecoration(
     border: Border(
-      bottom: BorderSide( //                    <--- top side
+      bottom: BorderSide(
         color: Colors.grey,
         width: 0.5,
       ),
@@ -52,7 +52,7 @@ class _PostState extends State<Post> {
     return SizedBox(
       height: 100,
       child: Container(
-        decoration: myBoxDecoration(),
+        decoration: postDecoration(),
         margin: EdgeInsets.only(left: 20, right: 20, top: 13),
         child: buildContent(widget.content, context),
       ),
