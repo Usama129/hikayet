@@ -1,6 +1,6 @@
 # hikayet
 
-bir hikaye analaticam
+
 
 ## Getting Started
 
